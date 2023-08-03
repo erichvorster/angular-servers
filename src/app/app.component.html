@@ -1,7 +1,8 @@
 <div class="container">
+   <!-- $event holds the data emitted from the child component -->
   <app-cockpit
     (serverCreated)="onServerAdded($event)"
-    (bluePrintCrated)="onBlueprintAdded($event)"
+    (blueprintCreated)="onBlueprintAdded($event)"
   ></app-cockpit>
   <hr />
   <div class="row">
@@ -9,7 +10,14 @@
       <app-server-element
         *ngFor="let serverElement of serverElements"
         [servElement]="serverElement"
-      ></app-server-element>
+      >
+      <p>
+        <strong *ngIf="serverElement.type === 'server'" style="color: red">{{
+          serverElement.content
+        }}</strong>
+        <em *ngIf="serverElement.type === 'blueprint'" style="color:blue">{{ serverElement.content }}</em>
+      </p>
+    </app-server-element>
     </div>
   </div>
 </div>
