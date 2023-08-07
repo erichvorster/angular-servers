@@ -26,4 +26,13 @@ export class AppComponent {
     });
     console.log("Pushed", this.serverElements)
   }
+
+  onChangeFirst(){
+    this.serverElements[0].name = 'Changed';
+  }
+
+  onDestroyFirst(){
+    console.log('ngOnDestroy called')
+    this.serverElements.splice(0,1)
+  }
 }
